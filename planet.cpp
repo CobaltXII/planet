@@ -497,6 +497,14 @@ int main(int argc, char** argv)
 	// Allocate space to hold the vertex data of the icosphere.
 
 	float* icosphere_vertices = (float*)malloc(icosphere_managed_vertices.size() * (9 * sizeof(float)));
+
+	// Perturb the terrain using the noise modules by iterating through each 
+	// triangle rather than each vertex. This is done to make it easy to 
+	// calculate triangle normals.
+
+	for (int i = 0; i < icosphere_managed_vertices.size(); i += 3)
+	{
+	}
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
