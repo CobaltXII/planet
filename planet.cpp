@@ -723,6 +723,19 @@ int main(int argc, char** argv)
 
 				matrix_view = glm::rotate(matrix_view, glm::radians(0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 				matrix_view = glm::rotate(matrix_view, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+				// Calculate the model matrix.
+
+				glm::mat4 matrix_model = glm::mat4(1.0f);
+
+				// Translate the model matrix.
+
+				matrix_model = glm::translate(matrix_model, glm::vec3(0.0f, 0.0f, 0.2f * -10.0f));
+
+				// Rotate the model matrix.
+
+				matrix_model = glm::rotate(matrix_model, glm::radians(SDL_GetTicks() / 100.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+				matrix_model = glm::rotate(matrix_model, glm::radians(SDL_GetTicks() / 100.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 			}
 			// Disable backface culling.
 
