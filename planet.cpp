@@ -392,6 +392,13 @@ int main(int argc, char** argv)
 
 		return EXIT_FAILURE;
 	}
+
+	// Request OpenGL 3.3 Core.
+
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
