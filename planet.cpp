@@ -412,6 +412,15 @@ int main(int argc, char** argv)
 
 		return EXIT_FAILURE;
 	}
+
+	// Load all OpenGL 3.3 Core functions using GLAD.
+
+	if (!gladLoadGLLoader(SDL_GL_GetProcAddress)) 
+	{
+		std::cout << "Could not load OpenGL 3.3 Core functions using GLAD." << std::endl;
+
+		return EXIT_FAILURE;
+	}
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
