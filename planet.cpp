@@ -540,6 +540,33 @@ int main(int argc, char** argv)
 		float nx = normal.x;
 		float ny = normal.y;
 		float nz = normal.z;
+		
+		// Generate the vertex data.
+
+		for (int j = 0; j < 3; j++)
+		{
+			utils::Color color = color_map.GetColor(noise_map[j]);
+
+			// Write the position of the current vertex.
+
+			icosphere_vertices[(i + j) * 9 + 0] = icosphere_managed_vertices[i + j].x;
+			icosphere_vertices[(i + j) * 9 + 1] = icosphere_managed_vertices[i + j].y;
+			icosphere_vertices[(i + j) * 9 + 2] = icosphere_managed_vertices[i + j].z;
+
+			// Write the color of the current vertex.
+
+			icosphere_vertices[(i + j) * 9 + 3] = color.red / 255.0f;
+
+			icosphere_vertices[(i + j) * 9 + 4] = color.green / 255.0f;
+
+			icosphere_vertices[(i + j) * 9 + 5] = color.blue / 255.0f;
+
+			// Write the surface normal of the current vertex.
+
+			icosphere_vertices[(i + j) * 9 + 6] = nx;
+			icosphere_vertices[(i + j) * 9 + 7] = ny;
+			icosphere_vertices[(i + j) * 9 + 8] = nz;
+		}
 	}
 	// Exit successfully.
 
