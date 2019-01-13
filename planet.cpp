@@ -701,6 +701,14 @@ int main(int argc, char** argv)
 			// Enable depth testing.
 
 			glEnable(GL_DEPTH_TEST);
+
+			// Enable backface culling.
+
+			glEnable(GL_CULL_FACE);
+			// Disable backface culling.
+
+			glDisable(GL_CULL_FACE);
+
 			// Disable depth testing.
 
 			glDisable(GL_DEPTH_TEST);
