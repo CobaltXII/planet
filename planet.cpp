@@ -474,8 +474,8 @@ int main(int argc, char** argv)
 		noise_1.SetFrequency(2.0f);
 	}
 
-	// Create a gradient to define the color of points on the planet based the
-	// point's elevation.
+	// Create a gradient to define the color of points on the planet based on 
+	// the point's elevation.
 
 	noise::utils::GradientColor color_map;
 
