@@ -1,0 +1,62 @@
+/*
+
+GLM header include directives. Please use GLM 0.9.9.3 or greater for known 
+results. Previous versions of GLM are not guaranteed to work correctly.
+
+*/
+
+#include <glm/vec3.hpp>
+#include <glm/vec4.hpp>
+
+#include <glm/mat4x4.hpp>
+
+#include <glm/gtc/matrix_transform.hpp>
+
+/*
+
+libnoise header include directives. libnoise is used to generate coherent 
+noise for generating procedural planets.
+
+*/
+
+#include <noise/noise.h>
+
+/*
+
+noiseutils header include directives. noiseutils is used as a utility library
+on top of libnoise.
+
+*/
+
+#include "noiseutils.h"
+
+/*
+
+GLAD header include directives. GLAD is used to load OpenGL 3.3 Core 
+functions.
+
+*/
+
+#include "glad.h"
+
+/*
+
+SDL header include directives. Please use SDL 2.0.9 or greater for known 
+results. Previous versions of SDL are not guaranteed to work correctly.
+
+*/
+
+#include <SDL2/SDL.h>
+
+/*
+
+Standard header include directives.
+
+*/
+
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <vector>
+#include <tuple>
