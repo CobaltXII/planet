@@ -83,3 +83,21 @@ int add_vertex(std::vector<glm::vec3>& vector, glm::vec3 vertex)
 
 	return vector.size() - 1;
 }
+
+/*
+
+Return the index of a vertex in the middle of p_1 and p_2.
+
+*/
+
+int get_middle_point(std::vector<glm::vec3>& vector, int p_1, int p_2)
+{
+	glm::vec3 pt_1 = vector[p_1];
+	glm::vec3 pt_2 = vector[p_2];
+
+	glm::vec3 pt_middle = (pt_1 + pt_2) / 2.0f;
+
+	int i = add_vertex(vector, pt_middle);
+
+	return i;
+}
