@@ -597,17 +597,19 @@ int main(int argc, char** argv)
 
 	// Upload the icosphere data to the VBO.
 
-	glBufferData(GL_ARRAY_BUFFER, icosphere_managed_vertices.size() * (9 * sizeof(float)), icosphere_vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, icosphere_managed_vertices.size() * (10 * sizeof(float)), icosphere_vertices, GL_STATIC_DRAW);
 
 	// Enable the required vertex attribute pointers.
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(0 * sizeof(float)));
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(3 * sizeof(float)));
-	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(6 * sizeof(float)));
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*)(0 * sizeof(float)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*)(6 * sizeof(float)));
+	glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*)(9 * sizeof(float)));
 
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);
 	glEnableVertexAttribArray(2);
+	glEnableVertexAttribArray(3);
 
 	// Unbind the VAO and the VBO of the icosphere from the current state.
 
