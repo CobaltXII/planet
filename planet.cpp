@@ -623,6 +623,69 @@ int main(int argc, char** argv)
 
 	while (sdl_running)
 	{
+		// Refresh the window's size.
+
+		SDL_GetWindowSize(sdl_window, &sdl_x_res, &sdl_y_res);
+
+		// Poll and handle events.
+		
+		SDL_Event e;
+
+		while (SDL_PollEvent(&e))
+		{
+			if (e.type == SDL_QUIT)
+			{
+				// The application was quit.
+
+				sdl_running = false;
+			}
+			else if (e.type == SDL_MOUSEMOTION)
+			{
+				// The mouse moved.
+
+				sdl_mouse_x = e.motion.x;
+				sdl_mouse_y = e.motion.y;	
+			}
+			else if (e.type == SDL_MOUSEBUTTONDOWN)
+			{
+				// A mouse button was pressed.
+
+				if (e.button.button == SDL_BUTTON_LEFT)
+				{
+					sdl_mouse_l = true;
+				}
+				else if (e.button.button == SDL_BUTTON_RIGHT)
+				{
+					sdl_mouse_r = true;
+				}
+			}
+			else if (e.type == SDL_MOUSEBUTTONUP)
+			{
+				// A mouse button was released.
+
+				if (e.button.button == SDL_BUTTON_LEFT)
+				{
+					sdl_mouse_l = false;
+				}
+				else if (e.button.button == SDL_BUTTON_RIGHT)
+				{
+					sdl_mouse_r = false;
+				}
+			}
+			else if (e.type == SDL_KEYDOWN)
+			{
+				// A key was pressed.
+
+				SDL_Keycode key = e.key.keysym.sym;
+
+				if (key == SDLK_ESCAPE)
+				{
+					// Quit the application.
+
+					sdl_running = false;
+				}
+			}
+		}
 	}
 	// Exit successfully.
 
