@@ -603,6 +603,10 @@ int main(int argc, char** argv)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	glBindVertexArray(0);
+
+	// Load the default shader program.
+
+	GLuint default_shader_program = load_shader_program("default_vertex.glsl", "default_fragment.glsl", GL_VERTEX_SHADER, GL_FRAGMENT_SHADER);
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
