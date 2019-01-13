@@ -694,6 +694,12 @@ int main(int argc, char** argv)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		{
+			// Enable the default shader program.
+
+			glUseProgram(default_shader_program);
+			// Disable the default shader program.
+
+			glUseProgram(0);
 		}
 	}
 	// Exit successfully.
