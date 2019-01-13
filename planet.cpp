@@ -399,6 +399,19 @@ int main(int argc, char** argv)
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+
+	// Create a SDL_GLContext.
+
+	SDL_GLContext gl_context = SDL_GL_CreateContext(sdl_window);
+
+	// Make sure the SDL_GLContext was created successfully.
+
+	if (!gl_context)
+	{
+		std::cout << "Could not create a SDL_GLContext." << std::endl;
+
+		return EXIT_FAILURE;
+	}
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
