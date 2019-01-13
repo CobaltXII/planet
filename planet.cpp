@@ -746,7 +746,26 @@ int main(int argc, char** argv)
 
 				glUniformMatrix4fv(glGetUniformLocation(default_shader_program, "matrix_model"), 1, GL_FALSE, &matrix_model[0][0]);
 			}
+
+			// Bind the icosphere VAO to the current state.
+
+			glBindVertexArray(icosphere_vao);
+			
+			// Set the polygon mode to render wireframes.
+
+			if (false)
+			{
+				glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 			}
+
+			// Draw the icosphere VAO as an array of triangles.
+
+			glDrawArrays(GL_TRIANGLES, 0, icosphere_managed_vertices.size());
+
+			// Unbind the icosphere VAO from the current state.
+
+			glBindVertexArray(0);
+
 			// Disable backface culling.
 
 			glDisable(GL_CULL_FACE);
