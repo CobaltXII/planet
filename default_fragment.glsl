@@ -8,8 +8,6 @@ in vec3 color_attribute;
 
 in vec3 normal_attribute;
 
-in float specular_attribute;
-
 in vec3 light;
 
 // Output to OpenGL.
@@ -20,14 +18,19 @@ out vec4 fragment_color;
 
 void main()
 {
-	// Calculate the light's intensity.
+	// Diffuse lighting.
 
-	float intensity = dot(light, normal_attribute);
+	vec3 diffuse = max(dot(normal_attribute, light), 0.0f) * vec3(1.0f, 1.0f, 1.0f);
 
-	// Pass the color attribute input from the vertex shader to OpenGL, after
-	// calculating diffuse and specular lighting.
+	// Specular lighting.
 
-	vec3 highlight = vec3(1.0f, 1.0f, 1.0f) * pow(intensity, specular_attribute);
+	vec3 view_direction = normalize(position_attribute);
 
-	fragment_color = vec4((color_attribute + highlight) * intensity, 1.0f);
+	vec3 reflected_direction = reflect(-light, normal_attribute);
+
+	vec3 specular = pow(max(dot(view_direction, reflected_direction), 0.0f), 128.0f) * vec3(1.0f, 1.0f, 1.0f);
+
+	// Combined diffuse and specular lighting.
+
+	fragment_color = vec4(diffuse * color_attribute + specular, 1.0f);
 }

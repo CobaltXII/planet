@@ -496,7 +496,7 @@ int main(int argc, char** argv)
 
 	// Allocate space to hold the vertex data of the icosphere.
 
-	float* icosphere_vertices = (float*)malloc(icosphere_managed_vertices.size() * (10 * sizeof(float)));
+	float* icosphere_vertices = (float*)malloc(icosphere_managed_vertices.size() * (9 * sizeof(float)));
 
 	// Perturb the terrain using the noise modules by iterating through each 
 	// triangle rather than each vertex. This is done to make it easy to 
@@ -549,34 +549,23 @@ int main(int argc, char** argv)
 
 			// Write the position of the current vertex.
 
-			icosphere_vertices[(i + j) * 10 + 0] = icosphere_managed_vertices[i + j].x;
-			icosphere_vertices[(i + j) * 10 + 1] = icosphere_managed_vertices[i + j].y;
-			icosphere_vertices[(i + j) * 10 + 2] = icosphere_managed_vertices[i + j].z;
+			icosphere_vertices[(i + j) * 9 + 0] = icosphere_managed_vertices[i + j].x;
+			icosphere_vertices[(i + j) * 9 + 1] = icosphere_managed_vertices[i + j].y;
+			icosphere_vertices[(i + j) * 9 + 2] = icosphere_managed_vertices[i + j].z;
 
 			// Write the color of the current vertex.
 
-			icosphere_vertices[(i + j) * 10 + 3] = color.red / 255.0f;
+			icosphere_vertices[(i + j) * 9 + 3] = color.red / 255.0f;
 
-			icosphere_vertices[(i + j) * 10 + 4] = color.green / 255.0f;
+			icosphere_vertices[(i + j) * 9 + 4] = color.green / 255.0f;
 
-			icosphere_vertices[(i + j) * 10 + 5] = color.blue / 255.0f;
+			icosphere_vertices[(i + j) * 9 + 5] = color.blue / 255.0f;
 
 			// Write the surface normal of the current vertex.
 
-			icosphere_vertices[(i + j) * 10 + 6] = nx;
-			icosphere_vertices[(i + j) * 10 + 7] = ny;
-			icosphere_vertices[(i + j) * 10 + 8] = nz;
-
-			// Calculate and write the specularity of the current vertex.
-
-			if (noise_map[j] <= 0.0625f)
-			{
-				icosphere_vertices[(i + j) * 10 + 9] = 64.0f;
-			}
-			else
-			{
-				icosphere_vertices[(i + j) * 10 + 9] = 16777216.0f;
-			}
+			icosphere_vertices[(i + j) * 9 + 6] = nx;
+			icosphere_vertices[(i + j) * 9 + 7] = ny;
+			icosphere_vertices[(i + j) * 9 + 8] = nz;
 		}
 	}
 
@@ -601,15 +590,13 @@ int main(int argc, char** argv)
 
 	// Enable the required vertex attribute pointers.
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*)(0 * sizeof(float)));
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*)(3 * sizeof(float)));
-	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*)(6 * sizeof(float)));
-	glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*)(9 * sizeof(float)));
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(0 * sizeof(float)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(6 * sizeof(float)));
 
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);
 	glEnableVertexAttribArray(2);
-	glEnableVertexAttribArray(3);
 
 	// Unbind the VAO and the VBO of the icosphere from the current state.
 
