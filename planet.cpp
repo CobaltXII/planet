@@ -348,3 +348,16 @@ GLuint load_shader_program
 
 	return shader_program;
 }
+
+/*
+
+Entry point.
+
+*/
+
+int main(int argc, char** argv)
+{
+	// Exit successfully.
+
+	return EXIT_SUCCESS;
+}
