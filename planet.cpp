@@ -60,3 +60,12 @@ Standard header include directives.
 #include <string>
 #include <vector>
 #include <tuple>
+
+/*
+
+A std::tuple<int, int, int> is used to represent a triangle defined by indices
+in a list of vertices.
+
+*/
+
+typedef std::tuple<int, int, int> triangle_indices;
