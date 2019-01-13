@@ -607,6 +607,17 @@ int main(int argc, char** argv)
 	// Load the default shader program.
 
 	GLuint default_shader_program = load_shader_program("default_vertex.glsl", "default_fragment.glsl", GL_VERTEX_SHADER, GL_FRAGMENT_SHADER);
+
+	// Define variables to hold the state of the mouse and the application's
+	// state.
+
+	int sdl_mouse_x = 0;
+	int sdl_mouse_y = 0;
+
+	bool sdl_mouse_l = false;
+	bool sdl_mouse_r = false;
+
+	bool sdl_running = true;
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
