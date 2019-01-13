@@ -566,6 +566,17 @@ int main(int argc, char** argv)
 			icosphere_vertices[(i + j) * 10 + 6] = nx;
 			icosphere_vertices[(i + j) * 10 + 7] = ny;
 			icosphere_vertices[(i + j) * 10 + 8] = nz;
+
+			// Calculate and write the specularity of the current vertex.
+
+			if (noise_map[j] <= 0.0625f)
+			{
+				icosphere_vertices[(i + j) * 10 + 9] = 64.0f;
+			}
+			else
+			{
+				icosphere_vertices[(i + j) * 10 + 9] = 16777216.0f;
+			}
 		}
 	}
 
