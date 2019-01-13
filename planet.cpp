@@ -473,6 +473,22 @@ int main(int argc, char** argv)
 
 		noise_1.SetFrequency(2.0f);
 	}
+
+	// Create a gradient to define the color of points on the planet based the
+	// point's elevation.
+
+	noise::utils::GradientColor color_map;
+
+	color_map.Clear();
+	
+	color_map.AddGradientPoint(0.0f - 1.0000f, noise::utils::Color(0x00, 0x00, 0x80, 0xFF));
+	color_map.AddGradientPoint(0.0f - 0.2500f, noise::utils::Color(0x00, 0x00, 0xFF, 0xFF));
+	color_map.AddGradientPoint(0.0f + 0.0000f, noise::utils::Color(0x00, 0x80, 0xFF, 0xFF));
+	color_map.AddGradientPoint(0.0f + 0.0625f, noise::utils::Color(0xF0, 0xF0, 0x40, 0xFF));
+	color_map.AddGradientPoint(0.0f + 0.1250f, noise::utils::Color(0x20, 0xA0, 0x00, 0xFF));
+	color_map.AddGradientPoint(0.0f + 0.3750f, noise::utils::Color(0xE0, 0xE0, 0x00, 0xFF));
+	color_map.AddGradientPoint(0.0f + 0.7500f, noise::utils::Color(0x80, 0x80, 0x80, 0xFF));
+	color_map.AddGradientPoint(0.0f + 1.0000f, noise::utils::Color(0xFF, 0xFF, 0xFF, 0xFF));
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
