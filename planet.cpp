@@ -714,6 +714,15 @@ int main(int argc, char** argv)
 				// Calculate the projection matrix.
 
 				glm::mat4 matrix_projection = glm::perspective(glm::radians(70.0f), aspect_ratio, 0.128f, 1024.0f);
+
+				// Calculate the view matrix.
+
+				glm::mat4 matrix_view = glm::mat4(1.0f);
+
+				// Rotate the view matrix.
+
+				matrix_view = glm::rotate(matrix_view, glm::radians(0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+				matrix_view = glm::rotate(matrix_view, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 			}
 			// Disable backface culling.
 
