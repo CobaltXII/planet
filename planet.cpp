@@ -504,6 +504,31 @@ int main(int argc, char** argv)
 
 	for (int i = 0; i < icosphere_managed_vertices.size(); i += 3)
 	{
+		// Create an array to hold the noise values at the three vertices of 
+		// the current triangle.
+
+		float noise_map[3];
+
+		for (int j = 0; j < 3; j++)
+		{
+			// Get the current vertex.
+
+			glm::vec3 vertex = icosphere_managed_vertices[i + j];
+
+			// Get the noise value at the current vertex.
+
+			float actual_noise_value = noise_1.GetValue(vertex.x, vertex.y, vertex.z) * (noise_2.GetValue(vertex.x, vertex.y, vertex.z) + 0.2f);
+
+			// Clamp the noise value to create smooth, flat water.
+
+			float noise_value = std::max(0.0f, actual_noise_value);
+
+			noise_map[j] = actual_noise_value;
+
+			// Perturb the current vertex by the noise value.
+
+			icosphere_managed_vertices[i + j] = vertex * (1.0f + noise_value * 0.075f);
+		}
 	}
 	// Exit successfully.
 
