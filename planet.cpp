@@ -784,6 +784,27 @@ int main(int argc, char** argv)
 
 		SDL_GL_SwapWindow(sdl_window);
 	}
+
+	// Free the icosphere's vertices.
+
+	free(icosphere_vertices);
+
+	// Destroy the default shader program.
+
+	glDeleteProgram(default_shader_program);
+
+	// Destroy all SDL_GL resources.
+
+	SDL_GL_DeleteContext(gl_context);
+
+	// Destroy all SDL resources.
+
+	SDL_DestroyWindow(sdl_window);
+
+	// Quit SDL.
+
+	SDL_Quit();
+
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
