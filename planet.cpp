@@ -707,6 +707,13 @@ int main(int argc, char** argv)
 			glEnable(GL_CULL_FACE);
 
 			{
+				// Calculate the aspect ratio.
+
+				float aspect_ratio = (float)sdl_x_res / (float)sdl_y_res;
+
+				// Calculate the projection matrix.
+
+				glm::mat4 matrix_projection = glm::perspective(glm::radians(70.0f), aspect_ratio, 0.128f, 1024.0f);
 			}
 			// Disable backface culling.
 
