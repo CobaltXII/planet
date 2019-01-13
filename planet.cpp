@@ -489,6 +489,14 @@ int main(int argc, char** argv)
 	color_map.AddGradientPoint(0.0f + 0.3750f, noise::utils::Color(0xE0, 0xE0, 0x00, 0xFF));
 	color_map.AddGradientPoint(0.0f + 0.7500f, noise::utils::Color(0x80, 0x80, 0x80, 0xFF));
 	color_map.AddGradientPoint(0.0f + 1.0000f, noise::utils::Color(0xFF, 0xFF, 0xFF, 0xFF));
+
+	// Generate the base icosphere.
+
+	std::vector<glm::vec3> icosphere_managed_vertices = create_icosphere(8);
+
+	// Allocate space to hold the vertex data of the icosphere.
+
+	float* icosphere_vertices = (float*)malloc(icosphere_managed_vertices.size() * (9 * sizeof(float)));
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
