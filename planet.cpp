@@ -462,16 +462,16 @@ int main(int argc, char** argv)
 		// Set the seed to the current time, so that the output noise will be
 		// slightly different every time.
 
-		noise_1.SetSeed(time(NULL));
+		noise_2.SetSeed(time(NULL));
 
 		// Set the octave count to 16 for a high level of detail.
 
-		noise_1.SetOctaveCount(16);
+		noise_2.SetOctaveCount(16);
 
 		// Set the frequency to 2.0f to make the noise more random and less
 		// coherent.
 
-		noise_1.SetFrequency(2.0f);
+		noise_2.SetFrequency(1.0f);
 	}
 
 	// Create a gradient to define the color of points on the planet based on 
