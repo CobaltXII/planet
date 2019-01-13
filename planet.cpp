@@ -529,6 +529,17 @@ int main(int argc, char** argv)
 
 			icosphere_managed_vertices[i + j] = vertex * (1.0f + noise_value * 0.075f);
 		}
+
+		// Calculate the triangle's normal.
+
+		glm::vec3 edge_1 = icosphere_managed_vertices[i + 1] - icosphere_managed_vertices[i];
+		glm::vec3 edge_2 = icosphere_managed_vertices[i + 2] - icosphere_managed_vertices[i];
+
+		glm::vec3 normal = glm::normalize(glm::cross(edge_1, edge_2));
+
+		float nx = normal.x;
+		float ny = normal.y;
+		float nz = normal.z;
 	}
 	// Exit successfully.
 
