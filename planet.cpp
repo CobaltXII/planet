@@ -365,6 +365,33 @@ int main(int argc, char** argv)
 
 		return EXIT_FAILURE;
 	}
+
+	// Create a SDL_Window*.
+
+	int sdl_x_res = 960;
+	int sdl_y_res = 960;
+
+	SDL_Window* sdl_window = SDL_CreateWindow
+	(
+		"SDL 2.0 with OpenGL 3.3 Core",
+
+		SDL_WINDOWPOS_UNDEFINED,
+		SDL_WINDOWPOS_UNDEFINED,
+
+		sdl_x_res,
+		sdl_y_res,
+
+		SDL_WINDOW_ALLOW_HIGHDPI | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL
+	);
+
+	// Make sure the SDL_Window* was created successfully.
+
+	if (!sdl_window)
+	{
+		std::cout << "Could not create a SDL_Window*." << std::endl;
+
+		return EXIT_FAILURE;
+	}
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
