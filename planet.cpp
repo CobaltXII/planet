@@ -736,6 +736,16 @@ int main(int argc, char** argv)
 
 				matrix_model = glm::rotate(matrix_model, glm::radians(SDL_GetTicks() / 100.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 				matrix_model = glm::rotate(matrix_model, glm::radians(SDL_GetTicks() / 100.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+				// Pass matrix_projection, matrix_view and matrix_model to the
+				// default_shader_program.
+
+				glUniformMatrix4fv(glGetUniformLocation(default_shader_program, "matrix_projection"), 1, GL_FALSE, &matrix_projection[0][0]);
+
+				glUniformMatrix4fv(glGetUniformLocation(default_shader_program, "matrix_view"), 1, GL_FALSE, &matrix_view[0][0]);
+
+				glUniformMatrix4fv(glGetUniformLocation(default_shader_program, "matrix_model"), 1, GL_FALSE, &matrix_model[0][0]);
+			}
 			}
 			// Disable backface culling.
 
