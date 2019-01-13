@@ -705,6 +705,9 @@ int main(int argc, char** argv)
 			// Enable backface culling.
 
 			glEnable(GL_CULL_FACE);
+
+			{
+			}
 			// Disable backface culling.
 
 			glDisable(GL_CULL_FACE);
