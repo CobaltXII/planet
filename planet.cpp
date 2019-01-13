@@ -69,3 +69,17 @@ in a list of vertices.
 */
 
 typedef std::tuple<int, int, int> triangle_indices;
+
+/*
+
+Add a vertex to a std::vector<glm::vec3> while ensuring that the vertex lies
+on the unit sphere.
+
+*/
+
+int add_vertex(std::vector<glm::vec3>& vector, glm::vec3 vertex)
+{
+	vector.push_back(vertex / glm::length(vertex));
+
+	return vector.size() - 1;
+}
