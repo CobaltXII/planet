@@ -421,6 +421,16 @@ int main(int argc, char** argv)
 
 		return EXIT_FAILURE;
 	}
+
+	// Make sure the OpenGL version that was loaded by GLAD is greater than or
+	// equal to OpenGL 3.3.
+
+	if (GLVersion.major * 10 + GLVersion.minor < 33)
+	{
+		std::cout << "Could not load OpenGL 3.3 Core functions using GLAD." << std::endl;
+
+		return EXIT_FAILURE;
+	}
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
