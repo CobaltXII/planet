@@ -431,6 +431,48 @@ int main(int argc, char** argv)
 
 		return EXIT_FAILURE;
 	}
+
+	// Create and initialize a noise::module::Perlin. This noise module will
+	// dictate the general shape of the islands on the planet.
+
+	noise::module::Perlin noise_1;
+
+	{
+		// Set the seed to the current time, so that the output noise will be
+		// slightly different every time.
+
+		noise_1.SetSeed(time(NULL));
+
+		// Set the octave count to 16 for a high level of detail.
+
+		noise_1.SetOctaveCount(16);
+
+		// Set the frequency to 2.0f to make the noise more random and less
+		// coherent.
+
+		noise_1.SetFrequency(2.0f);
+	}
+
+	// Create and initialize a noise::module::RidgedMulti. This noise module 
+	// will create round basins and sharp mountain ranges.
+
+	noise::module::RidgedMulti noise_2;
+
+	{
+		// Set the seed to the current time, so that the output noise will be
+		// slightly different every time.
+
+		noise_1.SetSeed(time(NULL));
+
+		// Set the octave count to 16 for a high level of detail.
+
+		noise_1.SetOctaveCount(16);
+
+		// Set the frequency to 2.0f to make the noise more random and less
+		// coherent.
+
+		noise_1.SetFrequency(2.0f);
+	}
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
