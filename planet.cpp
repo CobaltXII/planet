@@ -357,6 +357,14 @@ Entry point.
 
 int main(int argc, char** argv)
 {
+	// Initialize SDL.
+
+	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
+	{
+		std::cout << "Could not initialize SDL." << std::endl;
+
+		return EXIT_FAILURE;
+	}
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
