@@ -210,3 +210,141 @@ std::vector<glm::vec3> create_icosphere(int subdivisions = 8)
 
 	return icosphere_mesh;
 };
+
+/*
+
+Load a shader program from two files.
+
+*/
+
+GLuint load_shader_program
+(
+	std::string shader_path_0,
+	std::string shader_path_1,
+
+	GLenum shader_type_0,
+	GLenum shader_type_1
+)
+{
+	// Open shader_path_0 and shader_path_1 as input file streams.
+
+	std::ifstream shader_file_0(shader_path_0);
+	std::ifstream shader_file_1(shader_path_1);
+
+	if (!shader_file_0.is_open())
+	{
+		std::cout << "Could not open file \"" << shader_path_0 << "\"." << std::endl;
+
+		exit(EXIT_FAILURE);
+	}
+	else if (!shader_file_1.is_open())
+	{
+		std::cout << "Could not open file \"" << shader_path_1 << "\"." << std::endl;
+
+		exit(EXIT_FAILURE);
+	}
+
+	// Load the text context of shader_path_0 and shader_path_1 into 
+	// shader_buffer_0 and shader_buffer_1.
+
+	std::stringstream shader_buffer_0;
+	std::stringstream shader_buffer_1;
+
+	shader_buffer_0 << shader_file_0.rdbuf() << "\0";
+	shader_buffer_1 << shader_file_1.rdbuf() << "\0";
+
+	// Convert shader_buffer_0 and shader_buffer_1 from std::stringstream to
+	// std::string, and then to const GLchar* (const char*).
+
+	std::string shader_text_0 = shader_buffer_0.str();
+	std::string shader_text_1 = shader_buffer_1.str();
+
+	const GLchar* shader_data_0 = shader_text_0.c_str();
+	const GLchar* shader_data_1 = shader_text_1.c_str();
+
+	// Create shader_0 and shader_1 with the types shader_type_0 and 
+	// shader_type_1, then source them with shader_data_0 and shader_data_1.
+
+	GLuint shader_0 = glCreateShader(shader_type_0);
+	GLuint shader_1 = glCreateShader(shader_type_1);
+
+	glShaderSource(shader_0, 1, &shader_data_0, NULL);
+	glShaderSource(shader_1, 1, &shader_data_1, NULL);
+
+	// Compile shader_0 and shader_1.
+
+	glCompileShader(shader_0);
+	glCompileShader(shader_1);
+
+	// Check if shader_0 or shader_1 failed compilation. If so, print out the
+	// error message provided by OpenGL.
+
+	GLint success_0 = 0;
+	GLint success_1 = 0;
+
+	GLchar crash_information_0[16 * 1024];
+	GLchar crash_information_1[16 * 1024];
+
+	glGetShaderiv(shader_0, GL_COMPILE_STATUS, &success_0);
+	glGetShaderiv(shader_1, GL_COMPILE_STATUS, &success_1);
+
+	if (!success_0)
+	{
+		std::cout << "Could not compile shader loaded from \"" << shader_path_0 << "\"." << std::endl;
+
+		glGetShaderInfoLog(shader_0, 16 * 1024, NULL, crash_information_0);
+
+		std::cout << crash_information_0;
+
+		exit(EXIT_FAILURE);
+	}
+	else if (!success_1)
+	{
+		std::cout << "Could not compile shader loaded from \"" << shader_path_1 << "\"." << std::endl;
+
+		glGetShaderInfoLog(shader_1, 16 * 1024, NULL, crash_information_1);
+
+		std::cout << crash_information_1;
+
+		exit(EXIT_FAILURE);
+	}
+
+	// Create an empty shader program.
+
+	GLuint shader_program = glCreateProgram();
+
+	// Attach shader_0 and shader_1 to shader_program, and then link 
+	// shader_program.
+
+	glAttachShader(shader_program, shader_0);
+	glAttachShader(shader_program, shader_1);
+
+	glLinkProgram(shader_program);
+
+	// Check if shader_program failed linkage. If so, print out the error 
+	// message provied by OpenGL.
+
+	GLint success_program = 0;
+
+	glGetProgramiv(shader_program, GL_LINK_STATUS, &success_program);
+
+	if (!success_program)
+	{
+		std::cout << "Could not link shader program loaded from \"" << shader_path_0 << "\" and \"" << shader_path_1 << "\"." << std::endl;
+
+		GLchar crash_information_program[16 * 1024];
+
+		glGetProgramInfoLog(shader_program, 16 * 1024, NULL, crash_information_program);
+
+		std::cout << crash_information_program;
+
+		exit(EXIT_FAILURE);
+	}
+
+	// Delete shader_0 and shader_1, then return shader_program.
+
+	glDeleteShader(shader_0);
+	glDeleteShader(shader_1);
+
+	return shader_program;
+}
