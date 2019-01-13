@@ -2,7 +2,7 @@
 
 This repository contains source code for a simple procedural planet generator. The code is written in C++11. The code uses OpenGL 3.3 for hardware graphics acceleration and libnoise for coherent noise generation. The planets start off as an icosahedron. The icosahedron is then subdivided 8 times, after which the icosahedron becomes an icosphere. The vertices are then perturbed by a three-dimensional noise field which creates basins, mountain ranges and water. The elevation of the perturbed vertices is used to determine the color of the vertices. Further preprocessing is applied to create smooth water.
 
-![Alt text](https://github.com/CobaltXII/planet/blob/master/screenshot_2.png?raw=true)
+![Alt text](https://github.com/CobaltXII/planet/blob/master/img/screenshot_6.png?raw=true)
 
 # Dependencies
 
