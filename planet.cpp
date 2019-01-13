@@ -697,6 +697,14 @@ int main(int argc, char** argv)
 			// Enable the default shader program.
 
 			glUseProgram(default_shader_program);
+
+			// Enable depth testing.
+
+			glEnable(GL_DEPTH_TEST);
+			// Disable depth testing.
+
+			glDisable(GL_DEPTH_TEST);
+
 			// Disable the default shader program.
 
 			glUseProgram(0);
