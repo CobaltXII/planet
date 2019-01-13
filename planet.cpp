@@ -778,6 +778,11 @@ int main(int argc, char** argv)
 
 			glUseProgram(0);
 		}
+
+		// Swap the sdl_window's current buffer to display the contents of the
+		// back buffer to the screen.
+
+		SDL_GL_SwapWindow(sdl_window);
 	}
 	// Exit successfully.
 
