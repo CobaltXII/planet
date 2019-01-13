@@ -568,6 +568,41 @@ int main(int argc, char** argv)
 			icosphere_vertices[(i + j) * 9 + 8] = nz;
 		}
 	}
+
+	// Generate a VAO and a VBO for the icosphere.
+
+	GLuint icosphere_vao;
+	GLuint icosphere_vbo;
+
+	glGenVertexArrays(1, &icosphere_vao);
+
+	glGenBuffers(1, &icosphere_vbo);
+
+	// Bind the VAO and the VBO of the icosphere to the current state.
+
+	glBindVertexArray(icosphere_vao);
+
+	glBindBuffer(GL_ARRAY_BUFFER, icosphere_vbo);
+
+	// Upload the icosphere data to the VBO.
+
+	glBufferData(GL_ARRAY_BUFFER, icosphere_managed_vertices.size() * (9 * sizeof(float)), icosphere_vertices, GL_STATIC_DRAW);
+
+	// Enable the required vertex attribute pointers.
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(0 * sizeof(float)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(6 * sizeof(float)));
+
+	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(1);
+	glEnableVertexAttribArray(2);
+
+	// Unbind the VAO and the VBO of the icosphere from the current state.
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	glBindVertexArray(0);
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
