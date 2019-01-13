@@ -618,6 +618,12 @@ int main(int argc, char** argv)
 	bool sdl_mouse_r = false;
 
 	bool sdl_running = true;
+
+	// Enter the main loop.
+
+	while (sdl_running)
+	{
+	}
 	// Exit successfully.
 
 	return EXIT_SUCCESS;
