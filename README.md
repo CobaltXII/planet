@@ -18,4 +18,4 @@ clang++ -std=c++11 planet.cpp noiseutils.cpp glad.c -o planet.o -lGL -lSDL2 -lli
 
 # License
 
-This repository and it's contents are licensed under the GNU GPLv3.
+This repository and it's contents are licensed under the MIT License.
