@@ -20,7 +20,7 @@ void main()
 {
 	// Calculate the light's intensity.
 
-	float intensity = dot(light,normal_attribute);
+	float intensity = dot(light, normal_attribute);
 
 	// Pass the color attribute input from the vertex shader to OpenGL, after
 	// calculating diffuse and specular lighting.
